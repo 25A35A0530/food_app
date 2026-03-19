@@ -22,7 +22,6 @@ function Login() {
 
         if (data.status === "success") {
 
-          // ✅ store user
           localStorage.setItem("user", JSON.stringify(data.user));
 
           setMessage("Login Successful 🎉");
@@ -31,7 +30,6 @@ function Login() {
           setTimeout(() => {
             setShowPopup(false);
 
-            // 🔥 role based redirect
             if (data.user.role === "admin") {
               navigate("/admin-dashboard");
             } else {
@@ -52,7 +50,6 @@ function Login() {
   return (
     <div style={styles.container}>
 
-      {/* Popup */}
       {showPopup && (
         <div style={{
           ...styles.popup,
@@ -102,7 +99,6 @@ function Login() {
 
 export default Login;
 
-// 🎨 STYLES (same theme as register)
 const styles = {
   container: {
     height: "100vh",

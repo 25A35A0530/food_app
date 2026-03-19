@@ -7,7 +7,7 @@ function AdminOrders() {
   fetch("http://localhost/food-app/backend/getOrders.php")
     .then(res => res.json())
     .then(data => {
-      console.log(data); // 👈 ADD THIS
+      console.log(data); 
       setOrders(data);
     });
 }, []);
@@ -25,7 +25,6 @@ function AdminOrders() {
     })
       .then(res => res.json())
       .then(() => {
-        // Refresh orders
         fetch("http://localhost/food-app/backend/getOrders.php")
           .then(res => res.json())
           .then(data => setOrders(data));
@@ -60,7 +59,6 @@ function AdminOrders() {
               <p><strong>Total:</strong> ₹{o.total_price}</p>
               <p><strong>Date:</strong> {o.created_at}</p>
 
-              {/* Buttons */}
               <div style={styles.btnContainer}>
                 <button
                   style={styles.prepareBtn}

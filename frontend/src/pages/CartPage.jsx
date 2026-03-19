@@ -5,9 +5,8 @@ function CartPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const [cart, setCart] = useState(location.state || []);
-  const [toast, setToast] = useState(""); // For popup messages
-
-  // Show toast for 2 seconds, optional callback
+  const [toast, setToast] = useState(""); 
+ 
   const showToast = (message, callback) => {
     setToast(message);
     setTimeout(() => {
@@ -16,7 +15,6 @@ function CartPage() {
     }, 2000);
   };
 
-  // Increase quantity
   const increaseQty = (id) => {
     setCart(cart.map(item =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
@@ -24,7 +22,6 @@ function CartPage() {
     showToast("Quantity increased ✅");
   };
 
-  // Decrease quantity
   const decreaseQty = (id) => {
     setCart(cart.map(item =>
       item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
@@ -32,16 +29,13 @@ function CartPage() {
     showToast("Quantity decreased ✅");
   };
 
-  // Remove item
   const removeItem = (id) => {
     setCart(cart.filter(item => item.id !== id));
     showToast("Item removed 🗑️");
   };
 
-  // Calculate total
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  // Place Order
   const placeOrder = () => {
     if (cart.length === 0) {
       showToast("Cart is empty!");
@@ -55,10 +49,10 @@ function CartPage() {
     })
       .then(res => res.json())
       .then(data => {
-        // Show success toast, then clear cart & redirect
+       
         showToast("Order Placed Successfully 🎉", () => {
           setCart([]);
-          navigate("/home"); // Redirect to home page
+          navigate("/home"); 
         });
       })
       .catch(err => console.error("Error:", err));
@@ -103,7 +97,6 @@ function CartPage() {
         </>
       )}
 
-      {/* Toast popup */}
       {toast && (
         <div style={styles.toast}>{toast}</div>
       )}
@@ -187,12 +180,3 @@ const styles = {
     zIndex: 999,
   },
 };
-
-/* Add this to App.css or inside <style> for toast animation:
-@keyframes toastAnim {
-  0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  90% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-}
-*/

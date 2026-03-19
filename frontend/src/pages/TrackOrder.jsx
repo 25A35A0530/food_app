@@ -43,7 +43,6 @@ function TrackOrder() {
   ].map((step, index) => (
     <div key={index} style={{ display: "flex", alignItems: "center", flex: 1, position: "relative" }}>
       
-      {/* Circle with Icon */}
       <div
         style={{
           width: "35px",
@@ -61,7 +60,6 @@ function TrackOrder() {
         {step.icon}
       </div>
 
-      {/* Line */}
       {index < 2 && (
         <div
           style={{

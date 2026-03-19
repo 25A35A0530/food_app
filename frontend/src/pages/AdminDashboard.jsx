@@ -28,21 +28,18 @@ function AdminDashboard() {
 
       <div style={styles.grid}>
 
-        {/* Total Orders */}
         <div style={styles.card}>
           <div style={styles.icon}>📦</div>
           <h3>Total Orders</h3>
           <p style={styles.value}>{totalOrders}</p>
         </div>
 
-        {/* Revenue */}
         <div style={styles.card}>
           <div style={styles.icon}>💰</div>
           <h3>Total Revenue</h3>
           <p style={styles.value}>₹{totalRevenue}</p>
         </div>
 
-        {/* Delivered */}
         <div style={styles.card}>
           <div style={styles.icon}>✅</div>
           <h3>Delivered Orders</h3>
@@ -51,7 +48,6 @@ function AdminDashboard() {
 
       </div>
 
-      {/* Action Button */}
       <div style={{ textAlign: "center", marginTop: "40px" }}>
         <button
           style={styles.button}

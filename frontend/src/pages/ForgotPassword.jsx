@@ -26,7 +26,6 @@ function ForgotPassword() {
     setTimeout(() => {
       setShowPopup(false);
 
-      // 👉 redirect to login after success
       if (data.message.includes("success")) {
         navigate("/");
       }
@@ -36,7 +35,6 @@ function ForgotPassword() {
   return (
     <div style={styles.container}>
 
-      {/* Popup */}
       {showPopup && (
         <div style={{
           ...styles.popup,
@@ -79,7 +77,6 @@ function ForgotPassword() {
 
 export default ForgotPassword;
 
-// 🎨 SAME DESIGN SYSTEM
 const styles = {
   container: {
     height: "100vh",

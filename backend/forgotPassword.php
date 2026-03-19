@@ -10,12 +10,10 @@ $data = json_decode(file_get_contents("php://input"), true);
 $email = $data['email'];
 $newPassword = password_hash($data['password'], PASSWORD_DEFAULT);
 
-// Check user exists
 $result = $conn->query("SELECT * FROM users WHERE email='$email'");
 
 if ($result->num_rows > 0) {
 
-    // Update password
     $conn->query("UPDATE users SET password='$newPassword' WHERE email='$email'");
 
     echo json_encode(["message" => "Password updated successfully"]);

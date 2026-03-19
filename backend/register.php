@@ -11,7 +11,7 @@ $name = $data->name;
 $email = $data->email;
 $password = password_hash($data->password, PASSWORD_BCRYPT);
 
-// check email
+
 $check = $conn->query("SELECT * FROM users WHERE email='$email'");
 
 if ($check->num_rows > 0) {
@@ -19,7 +19,6 @@ if ($check->num_rows > 0) {
     exit();
 }
 
-// insert user
 $sql = "INSERT INTO users (name,email,password) VALUES ('$name','$email','$password')";
 
 if ($conn->query($sql)) {

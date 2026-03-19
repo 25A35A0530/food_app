@@ -7,7 +7,6 @@ function Home() {
   const [search, setSearch] = useState("");
   const [toast, setToast] = useState("");
 
-  // ✅ Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
@@ -33,14 +32,12 @@ function Home() {
     setTimeout(() => setToast(""), 2000);
   };
 
-  // ✅ Search filter
   const filteredFoods = foods.filter(
     (item) =>
       item.name.toLowerCase().includes(search.toLowerCase()) ||
       item.category.toLowerCase().includes(search.toLowerCase())
   );
 
-  // ✅ Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredFoods.slice(indexOfFirstItem, indexOfLastItem);
@@ -56,7 +53,7 @@ function Home() {
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          setCurrentPage(1); // ✅ reset page on search
+          setCurrentPage(1); 
         }}
         style={styles.search}
       />
@@ -70,10 +67,9 @@ function Home() {
         </button>
       </div>
 
-      {/* Toast */}
+     
       {toast && <div style={styles.toast}>{toast}</div>}
 
-      {/* Cards */}
       <div style={styles.cardsContainer}>
         {currentItems.length > 0 ? (
           currentItems.map(item => (
@@ -100,7 +96,7 @@ function Home() {
         )}
       </div>
 
-      {/* ✅ Pagination UI */}
+    
       {filteredFoods.length > 0 && (
         <div style={styles.pagination}>
           <button
@@ -111,7 +107,6 @@ function Home() {
             ⬅
           </button>
 
-          {/* Page Numbers */}
           {[...Array(totalPages)].map((_, index) => (
             <button
               key={index}
@@ -136,7 +131,6 @@ function Home() {
         </div>
       )}
 
-      {/* ✅ Showing info */}
       {filteredFoods.length > 0 && (
         <p style={styles.rangeText}>
           Showing {indexOfFirstItem + 1} -{" "}
@@ -266,7 +260,6 @@ const styles = {
     width: "100%"
   },
 
-  // ✅ Pagination styles
   pagination: {
     marginTop: "30px",
     display: "flex",

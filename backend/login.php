@@ -18,7 +18,6 @@ if ($result->num_rows > 0) {
 
     if (password_verify($password, $user['password'])) {
 
-        // ✅ SEND ONLY REQUIRED DATA (IMPORTANT)
         echo json_encode([
             "status" => "success",
             "user" => [

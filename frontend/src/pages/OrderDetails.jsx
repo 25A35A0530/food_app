@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function OrderDetails() {
-  const { orderId } = useParams(); // ✅ FIXED
+  const { orderId } = useParams(); 
   const navigate = useNavigate();
 
   const [order, setOrder] = useState(null);
@@ -12,7 +12,7 @@ function OrderDetails() {
     fetch("http://localhost/food-app/backend/getUserOrders.php")
       .then(res => res.json())
       .then(data => {
-        const foundOrder = data.find(o => o.id == orderId); // ✅ match id
+        const foundOrder = data.find(o => o.id == orderId); 
         setOrder(foundOrder);
         setLoading(false);
       })
